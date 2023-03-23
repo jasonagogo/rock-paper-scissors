@@ -21,25 +21,28 @@ function getPlayerChoice() {
 const win = "You win!";
 const lose = "You lose!";
 const tie = "You tie!";
+let x = getPlayerChoice();
+let y = getComputerChoice();
 let i = 1;
 
-/*function game () {
+function game () {
     do {
-
-        return console.log(playRound(x, y));
+        let playerSelection = getPlayerChoice();
+        let computerSelection = getComputerChoice();
+        return console.log(playRound(playerSelection, computerSelection));
         i++;
     }
     while (i < 5) {
         
     }
-}*/
+}
 
 
 /*4. Compare PC to CC
    A. Display each choice
    B. Declare victor */
 
-    function playRound() {
+    function playRound(x, y) {
         if (playerSelection === computerSelection) {
             return tie;
         } else if (playerSelection === "Rock") {
