@@ -1,7 +1,7 @@
 /* Rock Paper Scissors game for the Odin Project
 1. Get the computer's choice(cc) between Rock, Paper, or scissors */
 
-const choices  = ["Rock", "Paper", "Scissors"]
+const choices  = ["rock", "paper", "scissors"]
 const computerSelection = getComputerChoice();
 console.log(computerSelection);
 
@@ -11,11 +11,29 @@ function getComputerChoice() {
     }
 
 /* 2. Get the player's choice(PC) between Rock, Paper, or Scissors*/
-const playerSelection = "Rock";
-console.log(playerSelection);
+const playerSelection = getPlayerChoice();
+
+function getPlayerChoice() {
+   let pc = prompt("Rock, Paper, or Scissors?").toLowerCase();
+   return pc;
+}
+/*console.log(playerSelection);*/
 const win = "You win!";
 const lose = "You lose!";
 const tie = "You tie!";
+let i = 1;
+
+/*function game () {
+    do {
+
+        return console.log(playRound(x, y));
+        i++;
+    }
+    while (i < 5) {
+        
+    }
+}*/
+
 
 /*4. Compare PC to CC
    A. Display each choice
@@ -45,8 +63,7 @@ const tie = "You tie!";
         }
         }
     
-
-    console.log(playRound());
+console.log(game());
     
 
     
