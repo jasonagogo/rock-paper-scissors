@@ -20,12 +20,16 @@ function getComputerChoice() {
 
 /* 2. Get the player's choice(PC) between Rock, Paper, or Scissors*/
 let playerSelection = "x";
-const btn = document.getElementsByClassName('playerSelection[]');
-btn.forEach(button => {
-    btn.addEventListener('click', function(e) {
-    alert("Hello!")
-   });
-});
+
+const pchoices = document.querySelectorAll('.playerSelection');
+
+pchoices.forEach(choice => {
+    choice.addEventListener('click', function handleClick(e) {
+        alert('Box Clicked', e);
+    })
+})
+
+
 function getPlayerChoice() {
    let playerSelection = poop
    return playerSelection;
