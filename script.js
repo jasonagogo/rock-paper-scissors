@@ -2,10 +2,13 @@
 
 //Get the computer's choice(cc) between Rock, Paper, or scissors */
 
-const choices  = ["rock", "paper", "scissors"]
+const choices  = ["ROCK", "PAPER", "SCISSORS"]
 const win = "You win!";
 const lose = "You lose!";
 const tie = "You tie!";
+const state = document.querySelector('#gameState');
+state.textContent = "MAKE YOUR SELECTION!!!"
+const player = document.querySelector('.player');
 
 let computerSelection = getComputerChoice();
 
@@ -14,8 +17,7 @@ function getComputerChoice() {
     console.log(computerSelection);
     return computerSelection;
     }
-const state = document.querySelector('#gameState');
-state.textContent = "MAKE YOUR SELECTION!!!"
+
 
 /* 2. Get the player's choice(PC) between Rock, Paper, or Scissors*/
 const pchoices = document.querySelectorAll('.playerSelection');
@@ -25,7 +27,8 @@ let playerSelection = getPlayerChoice();
 function getPlayerChoice() {
    let playerSelection = pchoices.forEach(choice => {
     choice.addEventListener('click', function handleClick(e) {
-        console.log(this.id);
+        state.textContent = `YOU HAVE SELECTED ${this.id}!!!`.toUpperCase();
+        player.setAttribute("id", `${this.id}`);
         return this.id;
     })
 })
@@ -33,7 +36,7 @@ function getPlayerChoice() {
 }
 
 pchoices.forEach(choice => {
-    choice.addEventListener('click', playRound());
+    choice.addEventListener('click', );
 });
 /*console.log(playerSelection);*/
 
@@ -67,22 +70,22 @@ function playRound() {
     console.log(computerSelection);
     if (playerSelection === computerSelection) {
         return tie;
-    } else if (playerSelection === "rock") {
-        if (computerSelection === "paper") {
+    } else if (playerSelection === "ROCK") {
+        if (computerSelection === "PAPER") {
             return lose;
-        } else if (computerSelection === "scissors") {
+        } else if (computerSelection === "SCISSORS") {
             return win;
         }            
-    } else if (playerSelection === "paper") {
-        if (computerSelection === "rock") {
+    } else if (playerSelection === "PAPER") {
+        if (computerSelection === "ROCK") {
             return win;
-        } else if (computerSelection === "scissors") {
+        } else if (computerSelection === "SCISSORS") {
             return lose;
         }
     } else {
-        if (computerSelection === "paper") {
+        if (computerSelection === "PAPER") {
             return win;
-        } else if (computerSelection === "rock") {
+        } else if (computerSelection === "ROCK") {
             return lose;
         }
     }

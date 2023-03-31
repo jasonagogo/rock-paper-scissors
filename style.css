@@ -34,7 +34,7 @@ html {
     font-size: 32px;
 }
 
-#player {
+.player {
     margin: 8px;
     background-image: url("images/Chappie_cropped.png");
     background-repeat: no-repeat;
@@ -43,7 +43,19 @@ html {
     height: 400px;
 }
 
-#computer {
+.player#scissors {
+    background-image: url("images/Chappie_scissors.png");
+}
+
+.player#paper {
+    background-image: url("images/Chappie_paper.png");
+}
+
+.player#rock {
+    background-image: url("images/Chappie_rock.png");
+}
+
+.computer {
     margin: 8px;
     background-image: url("images/wopr.jpg");
     background-repeat: no-repeat;
@@ -52,7 +64,7 @@ html {
     width: 690px;
 }
 
-#player, #computer {
+.player, .computer {
     border-color: #5f475b;
     border-radius: 14px;
     border-style: solid;
@@ -64,7 +76,7 @@ html {
     background-color: #a6c8b8;
 }
 
-#contestants#player {
+#contestants.player {
     display: flex;
     margin-bottom: auto;
     margin-top: 8px;
@@ -111,7 +123,7 @@ html {
     background-repeat: no-repeat;
     background-size: contain;
     width: 200px;
-    height: 200px;
+    height: 200px;    
 }
 
 #buttons #rock {
@@ -128,9 +140,4 @@ html {
     background-size: contain;
     width: 200px;
     height: 200px;
-}
-
-.playerSelection img {
-    border-radius: 7px;
-    margin-top: 3px;
 }
