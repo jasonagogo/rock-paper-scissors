@@ -1,5 +1,13 @@
 /* Rock Paper Scissors game for the Odin Project
-1. Get the computer's choice(cc) between Rock, Paper, or scissors */
+// Draw the playing field
+const container = document.querySelector('#container');
+const div = document.createElement('div');
+div.classList.add('playingField');
+div.style.backgroundImage="url(images/1200px-Rock-paper-scissors.svg.png)"
+container.appendChild(div);
+
+
+//Get the computer's choice(cc) between Rock, Paper, or scissors */
 
 const choices  = ["rock", "paper", "scissors"]
 let computerSelection = "y";
@@ -12,9 +20,14 @@ function getComputerChoice() {
 
 /* 2. Get the player's choice(PC) between Rock, Paper, or Scissors*/
 let playerSelection = "x";
-
+const btn = document.getElementsByClassName('playerSelection[]');
+btn.forEach(button => {
+    btn.addEventListener('click', function(e) {
+    alert("Hello!")
+   });
+});
 function getPlayerChoice() {
-   let playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
+   let playerSelection = poop
    return playerSelection;
 }
 /*console.log(playerSelection);*/
@@ -62,4 +75,3 @@ function game () {
         }
         }
     
-console.log(game());

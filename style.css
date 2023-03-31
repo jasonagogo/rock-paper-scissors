@@ -1,0 +1,129 @@
+html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: fit-content;
+    /*background: url("images/800px-Rock-paper-scissors.png") no-repeat center fixed;*/
+   /* background-repeat:  no-repeat; 
+    background-position:  center;
+    background-size: ; */
+   /* height: 1333px; */
+    background-color: #a6c8b8;
+}
+
+#bod {
+    display: flex;
+    align-items: end;
+    border-color: #5f475b;
+    border-radius: 14px;
+    border-style: solid;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#contestants {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color:#5f475b;
+    font-weight: 1000;
+    font-size: 32px;
+}
+
+#player {
+    margin: 8px;
+    background-image: url("images/Chappie_cropped.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 400px;
+    height: 400px;
+}
+
+#computer {
+    margin: 8px;
+    background-image: url("images/wopr.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 400px;
+    width: 690px;
+}
+
+#player, #computer {
+    border-color: #5f475b;
+    border-radius: 14px;
+    border-style: solid;
+    box-shadow: 3px 3px #251f24;
+}
+
+
+#vs {
+    background-color: #a6c8b8;
+}
+
+#contestants#player {
+    display: flex;
+    margin-bottom: auto;
+    margin-top: 8px;
+    margin-right: 7px;
+    border-color: #5f475b;
+    border-style: solid;
+    border-radius: 14px;
+}
+
+.playerSelection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 4px;
+    margin-bottom: 8px;
+    margin-top: auto;
+    background-color: #a6c8b8;
+    color: #5f475b;
+    font-weight: 700;
+    border-radius: 14px;
+    border-color: #5f475b;
+    border-style: solid;
+    box-shadow: 3px 3px #251f24;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top:auto;
+    justify-content: space-evenly;
+}
+
+#buttons #scissors {
+    margin-right: 7px;
+    background-image: url("images/Chappie_scissors.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 200px;
+    height: 200px;
+}
+
+#buttons #rock {
+    background-image: url("images/Chappie_rock.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 200px;
+    height: 200px;
+}
+
+#buttons #paper {
+    background-image: url("images/Chappie_paper.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 200px;
+    height: 200px;
+}
+
+.playerSelection img {
+    border-radius: 7px;
+    margin-top: 3px;
+}
