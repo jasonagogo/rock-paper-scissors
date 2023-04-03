@@ -1,92 +1,52 @@
-/* Rock Paper Scissors game for the Odin Project
-
-//Get the computer's choice(cc) between Rock, Paper, or scissors */
-
-const choices  = ["ROCK", "PAPER", "SCISSORS"]
-const win = "You win!";
-const lose = "You lose!";
-const tie = "You tie!";
+//name global variables
+const choices= ['ROCK', 'PAPER', 'SCISSORS']
+const win = "YOU WIN!!!";
+const lose= "YOU LOSE!!!";
+const tie= "YOU TIE!!!";
 const state = document.querySelector('#gameState');
-state.textContent = "MAKE YOUR SELECTION!!!"
 const player = document.querySelector('.player');
-
-let computerSelection = getComputerChoice();
-
-function getComputerChoice() {
-    const computerSelection = choices[Math.floor(Math.random()*choices.length)];
-    console.log(computerSelection);
-    return computerSelection;
-    }
-
-
-/* 2. Get the player's choice(PC) between Rock, Paper, or Scissors*/
+const computer = document.querySelector('.computer');
 const pchoices = document.querySelectorAll('.playerSelection');
+state.textContent= "MAKE YOUR SELECTION!!!"
+const playerSelection= getPlayerChoice();
+const computerSelection= getComputerChoice();
 
-let playerSelection = getPlayerChoice();
-
+//collect player selection through an onClick event
 function getPlayerChoice() {
-   let playerSelection = pchoices.forEach(choice => {
-    choice.addEventListener('click', function handleClick(e) {
+    const playerSelection = pchoices.forEach(choice => {
+     choice.addEventListener('click', function handleClick(e) {
+        //change the state.textContent to reflect the player's selection
         state.textContent = `YOU HAVE SELECTED ${this.id}!!!`.toUpperCase();
-        player.setAttribute("id", `${this.id}`);
-        return this.id;
-    })
-})
-   return playerSelection;
+         player.setAttribute("id", `${this.id}`);
+         computer.textContent = 'NOW CLICK ME!!!';
+         return this.id;
+     })
+ })
+    return playerSelection;
+ }
+ 
+//generate the computerSelection through an onClick event
+function getComputerChoice() {
+    const computerSelection= computer.addEventListener('click', 
+      function handleClick(e) {
+        const computerSelection = choices[Math.floor(Math.random()*choices.length)];
+        return computer.textContent = computerSelection;
+      })
 }
 
-pchoices.forEach(choice => {
-    choice.addEventListener('click', );
-});
-/*console.log(playerSelection);*/
-
-
-function game () {
-    for (let i = 0; i < 5; i++ ) {
-      let winCount = 0;
-      let lossCount = 0;
-      let gameCount = i+1;
-      if (playRound() === win) {
-        winCount++
-        gameCount++
-      } else if (playRound() === lose) {
-          lossCount++
-          gameCount++
-      } else if (playRound() === tie) {
-          gameCount++
-      }
-      return "Wins: " + winCount + "     Losses: " + "      Games: " + gameCount;
-    }
-}
-
-
-/*4. Compare PC to CC
-   A. Display each choice
-   B. Declare victor */
+//compare playerSelection to computerSelection and determine winner
 
 function playRound() {
-    let playerSelection = getPlayerChoice();
-    let computerSelection = getComputerChoice();
-    console.log(computerSelection);
-    if (playerSelection === computerSelection) {
-        return tie;
-    } else if (playerSelection === "ROCK") {
-        if (computerSelection === "PAPER") {
-            return lose;
-        } else if (computerSelection === "SCISSORS") {
-            return win;
-        }            
-    } else if (playerSelection === "PAPER") {
-        if (computerSelection === "ROCK") {
-            return win;
-        } else if (computerSelection === "SCISSORS") {
-            return lose;
-        }
-    } else {
-        if (computerSelection === "PAPER") {
-            return win;
-        } else if (computerSelection === "ROCK") {
-            return lose;
-        }
-    }
-    };
+  for (let i=0; i<5; i++) {
+    let winCount= 0;
+    let lossCount= 0;
+    let gameCount= i+1;
+    state.textContent= "MAKE YOUR SELECTION!!!";
+    playerSelection = getPlayerChoice();
+    computerSelection = getComputerChoice();
+    //update gameCount, lossCount, winCount and return all three in state div
+  } 
+
+}
+
+

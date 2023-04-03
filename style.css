@@ -60,6 +60,13 @@ html {
     background-image: url("images/wopr.jpg");
     background-repeat: no-repeat;
     background-size: contain;
+    color: #a6c8b8;
+    text-shadow: 1px 1px 2px #5f475b, 0 0 2em #251f24;
+    font-size: xx-large;
+    text-align: start;
+    text-align: center;
+    font-weight: 1000;
+    border-style: solid;
     height: 400px;
     width: 690px;
 }
@@ -114,7 +121,7 @@ html {
     display: flex;
     flex-direction: row;
     margin-top:auto;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 #buttons #scissors {
@@ -122,22 +129,22 @@ html {
     background-image: url("images/Chappie_scissors.png");
     background-repeat: no-repeat;
     background-size: contain;
-    width: 200px;
-    height: 200px;    
+    min-height: 200px; 
+    min-width: 200px;   
 }
 
 #buttons #rock {
     background-image: url("images/Chappie_rock.png");
     background-repeat: no-repeat;
     background-size: contain;
-    width: 200px;
-    height: 200px;
+    min-height: 200px; 
+    min-width: 200px;
 }
 
 #buttons #paper {
     background-image: url("images/Chappie_paper.png");
     background-repeat: no-repeat;
     background-size: contain;
-    width: 200px;
-    height: 200px;
+    min-height: 200px; 
+    min-width: 200px;
 }
