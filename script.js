@@ -37,8 +37,10 @@ function getComputerChoice() {
 
 //compare playerSelection to computerSelection and determine winner
 
+let start = document.getElementbyClassName('computer').textContent;
 
-for (let i=0; i<5; i++) {
+/*if (start !== '') {  
+  for (let i=0; i<5; i++) {
     let winCount= 0;
     let lossCount= 0;
     let gameCount= i+1;
@@ -107,3 +109,4 @@ for (let i=0; i<5; i++) {
 
     //update gameCount, lossCount, winCount and return all three in state div
   }
+}*/
