@@ -7,7 +7,7 @@ const state = document.querySelector('#gameState');
 const player = document.querySelector('.player');
 const computer = document.querySelector('.computer');
 const pchoices = document.querySelectorAll('.playerSelection');
-state.textContent= "MAKE YOUR SELECTION!!!"
+state.textContent= "MAKE YOUR SELECTION!!!";
 let playerSelection= getPlayerChoice();
 let computerSelection= getComputerChoice();
 
