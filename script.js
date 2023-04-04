@@ -7,54 +7,60 @@ const state = document.querySelector('#gameState');
 const player = document.querySelector('.player');
 const computer = document.querySelector('.computer');
 const pchoices = document.querySelectorAll('.playerSelection');
-state.textContent= "MAKE YOUR SELECTION!!!"
+state.textContent= "MAKE YOUR SELECTION!!!";
 let playerSelection= getPlayerChoice();
 let computerSelection= getComputerChoice();
+let playerSelected = false;
+let computerSelected = false;
 
 //collect player selection through an onClick event
 function getPlayerChoice() {
-    const playerSelection = pchoices.forEach(choice => {
+  return new Promise((resolve, reject) => {  
+    for(const choice of pchoices) {
      choice.addEventListener('click', function handleClick(e) {
         //change the state.textContent to reflect the player's selection
         state.textContent = `YOU HAVE SELECTED ${this.id}!!!`.toUpperCase();
          player.setAttribute("id", `${this.id}`);
          computer.textContent = 'NOW CLICK ME!!!';
-         return this.id;
-     })
- })
-    return playerSelection;
- }
+         playerSelection = this.id.toUpperCase();
+         playerSelected = true;
+         resolve();
+     });
+    }
+  });
+}
  
 //generate the computerSelection through an onClick event
 function getComputerChoice() {
-    const computerSelection= computer.addEventListener('click', 
-      function handleClick(e) {
+    return new Promise((resolve, reject) => {
+      computer.addEventListener('click', function handleClick(e) {
         const computerSelection = choices[Math.floor(Math.random()*choices.length)];
         computer.textContent = computerSelection;
-        document.getElementsByClassName('computer').textContent
-      })
-    }
-
+        computerSelection = computerSelection.toUpperCase();
+        computerSelected = true;
+      });
+    });
+  }
 //compare playerSelection to computerSelection and determine winner
+if (playerSelected && computerSelected) {
+  game();
+}
 
-let start = document.getElementbyClassName('computer').textContent;
-
-/*if (start !== '') {  
+async function game() {
+  let winCount= 0;
+  let lossCount= 0; 
   for (let i=0; i<5; i++) {
-    let winCount= 0;
-    let lossCount= 0;
     let gameCount= i+1;
     state.textContent= "MAKE YOUR SELECTION!!!";
-    playerSelection = getPlayerChoice();
-    computerSelection = getComputerChoice();
-    let playerState = playerSelection.toUpperCase;
-    let computerState = computerSelection.toUpperCase;
+    let playerSelection =  await getPlayerChoice();
+    let computerSelection = await getComputerChoice();
+    let playerState = playerSelection;
+    let computerState = computerSelection;
     if (playerState === computerState) {
         computer.textContent = '';
         player.removeAttribute('id');
         state.textContent = tie + '     Game Count: ' + gameCount 
         '     Wins: ' + winCount + '     Losses: ' + lossCount;
-        return
     } else if (playerState === 'ROCK') {
         if (computerState === 'PAPER') {
           lossCount++
@@ -62,14 +68,12 @@ let start = document.getElementbyClassName('computer').textContent;
           player.removeAttribute('id');
           state.textContent = lose + '     Game Count: ' + gameCount 
           '     Wins: ' + winCount + '     Losses: ' + lossCount;
-          return
           } else {
             winCount++
             computer.textContent = '';
             player.removeAttribute('id');
             state.textContent = win + '     Game Count: ' + gameCount 
             '     Wins: ' + winCount + '     Losses: ' + lossCount;
-            return
           }
         }
       else if (playerState === 'PAPER') {
@@ -79,14 +83,12 @@ let start = document.getElementbyClassName('computer').textContent;
             player.removeAttribute('id');
             state.textContent = lose + '     Game Count: ' + gameCount 
             '     Wins: ' + winCount + '     Losses: ' + lossCount;
-            return
             } else {
               winCount++
               computer.textContent = '';
               player.removeAttribute('id');
               state.textContent = win + '     Game Count: ' + gameCount 
               '     Wins: ' + winCount + '     Losses: ' + lossCount;
-              return
             }
       }
       else {
@@ -96,17 +98,15 @@ let start = document.getElementbyClassName('computer').textContent;
             player.removeAttribute('id');
             state.textContent = lose + '     Game Count: ' + gameCount 
             '     Wins: ' + winCount + '     Losses: ' + lossCount;
-            return
             } else {
               winCount++
               computer.textContent = '';
               player.removeAttribute('id');
               state.textContent = win + '     Game Count: ' + gameCount 
               '     Wins: ' + winCount + '     Losses: ' + lossCount;
-              return
             }
       }  
 
     //update gameCount, lossCount, winCount and return all three in state div
   }
-}*/
+}
