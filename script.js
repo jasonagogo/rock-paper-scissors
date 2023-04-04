@@ -109,4 +109,8 @@ async function game() {
 
     //update gameCount, lossCount, winCount and return all three in state div
   }
+<<<<<<< HEAD
 }
+=======
+}*/
+>>>>>>> 1b630d8882e16ab13c461b59be1b97cafcef31dc
