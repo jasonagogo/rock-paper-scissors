@@ -5,22 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <title>Rock Paper Scissors</title>
-  
+  <link rel="icon" type="imae/x-icon" href="images/favicon.ico">
 </head>
 <body id="bod">
   <div id="container">
     <div id="contestants">
       <div class="player"></div>
       <div id="vs">VS</div>
-      <button class="computer"></button>
+      <div class="computer"></div>
     </div>
 
-    <div><h1 id="gameState"></h1></div>
+    <div>
+      <h1 class="gameState">
+        <div class = 'scoreBoard'>
+            <p>CHAPPIE SCORE</p>
+            <p id='playerScore'>0</p>
+        </div>
+        <div>  
+          <button id = 'startBtn'>START</button>
+          <div id ='result'><p>RESULTS</p></div>
+        </div>
+        <div class = 'scoreBoard'>
+          <p>W.O.P.R. SCORE</p>
+          <p id='computerScore'>0</p>
+        </div>
+      </h1>
+    </div>
 
-    <div id="buttons">
-      <button class="playerSelection" id="rock"></button>
-      <button class="playerSelection" id="paper"></button>
-      <button class="playerSelection" id="scissors"></button>
+    <div class="buttons">
+      <button class="playerSelection btn" id="rock"></button>
+      <button class="playerSelection btn" id="paper"></button>
+      <button class="playerSelection btn" id="scissors"></button>
     </div>
   </div>
   <script src="script.js"></script>

@@ -1,116 +1,94 @@
-//name global variables
-const choices= ['ROCK', 'PAPER', 'SCISSORS']
-const win = "YOU WIN!!!";
-const lose= "YOU LOSE!!!";
-const tie= "YOU TIE!!!";
-const state = document.querySelector('#gameState');
-const player = document.querySelector('.player');
-const computer = document.querySelector('.computer');
-const pchoices = document.querySelectorAll('.playerSelection');
-state.textContent= "MAKE YOUR SELECTION!!!";
-let playerSelection= getPlayerChoice();
-let computerSelection= getComputerChoice();
-let playerSelected = false;
-let computerSelected = false;
+const choices = ['ROCK', 'PAPER', 'SCISSORS'];
+let playerScore = 0;
+let computerScore = 0;
+let round = 1;
+const maxWin = 5;
+updateScore();
+let player = document.querySelector('.player');
+let scoreBoard = document.getElementsByClassName('.scoreBoard');
+const results = document.getElementById('result');
+let pchoices = document.querySelector('.playerSelection');
 
-//collect player selection through an onClick event
-function getPlayerChoice() {
-  return new Promise((resolve, reject) => {  
-    for(const choice of pchoices) {
-     choice.addEventListener('click', function handleClick(e) {
-        //change the state.textContent to reflect the player's selection
-        state.textContent = `YOU HAVE SELECTED ${this.id}!!!`.toUpperCase();
-         player.setAttribute("id", `${this.id}`);
-         computer.textContent = 'NOW CLICK ME!!!';
-         playerSelection = this.id.toUpperCase();
-         playerSelected = true;
-         resolve();
-     });
-    }
-  });
-}
- 
-//generate the computerSelection through an onClick event
+
+//generate computerSelection
 function getComputerChoice() {
-    return new Promise((resolve, reject) => {
-      computer.addEventListener('click', function handleClick(e) {
-        const computerSelection = choices[Math.floor(Math.random()*choices.length)];
-        computer.textContent = computerSelection;
-        computerSelection = computerSelection.toUpperCase();
-        computerSelected = true;
-      });
-    });
+  const computerSelection = choices[Math.floor(Math.random()*choices.length)];
+  return computerSelection;
   }
-//compare playerSelection to computerSelection and determine winner
-if (playerSelected && computerSelected) {
-  game();
-}
 
-async function game() {
-  let winCount= 0;
-  let lossCount= 0; 
-  for (let i=0; i<5; i++) {
-    let gameCount= i+1;
-    state.textContent= "MAKE YOUR SELECTION!!!";
-    let playerSelection =  await getPlayerChoice();
-    let computerSelection = await getComputerChoice();
-    let playerState = playerSelection;
-    let computerState = computerSelection;
-    if (playerState === computerState) {
-        computer.textContent = '';
-        player.removeAttribute('id');
-        state.textContent = tie + '     Game Count: ' + gameCount 
-        '     Wins: ' + winCount + '     Losses: ' + lossCount;
-    } else if (playerState === 'ROCK') {
-        if (computerState === 'PAPER') {
-          lossCount++
-          computer.textContent = '';
-          player.removeAttribute('id');
-          state.textContent = lose + '     Game Count: ' + gameCount 
-          '     Wins: ' + winCount + '     Losses: ' + lossCount;
-          } else {
-            winCount++
-            computer.textContent = '';
-            player.removeAttribute('id');
-            state.textContent = win + '     Game Count: ' + gameCount 
-            '     Wins: ' + winCount + '     Losses: ' + lossCount;
+let playRound = (playerSelection, computerSelection) => {
+  let result = document.createElement('p');
+  if (playerSelection === computerSelection) {
+    result.textContent = `Round #${round}: IT'S A TIE!!! ${playerSelection} and ${computerSelection}`;  
+  }else if(playerSelection === 'PAPER' && computerSelection === 'ROCK'
+          || playerSelection === 'ROCK' && computerSelection === 'SCISSORS'
+          || playerSelection === 'SCISSORS' && computerSelection === 'PAPER'){
+            playerScore++;
+            result.textContent = `ROUND #${round}: WIN!!! ${playerSelection} and ${computerSelection}`;
+          }else{
+            computerScore++,
+            result.textContent = `ROUND #${round}: LOSE!!! ${playerSelection} and ${computerSelection}`;
           }
-        }
-      else if (playerState === 'PAPER') {
-        if (computerState === 'SCISSORS') {
-            lossCount++
-            computer.textContent = '';
-            player.removeAttribute('id');
-            state.textContent = lose + '     Game Count: ' + gameCount 
-            '     Wins: ' + winCount + '     Losses: ' + lossCount;
-            } else {
-              winCount++
-              computer.textContent = '';
-              player.removeAttribute('id');
-              state.textContent = win + '     Game Count: ' + gameCount 
-              '     Wins: ' + winCount + '     Losses: ' + lossCount;
-            }
-      }
-      else {
-        if (computerState === 'ROCK') {
-            lossCount++
-            computer.textContent = '';
-            player.removeAttribute('id');
-            state.textContent = lose + '     Game Count: ' + gameCount 
-            '     Wins: ' + winCount + '     Losses: ' + lossCount;
-            } else {
-              winCount++
-              computer.textContent = '';
-              player.removeAttribute('id');
-              state.textContent = win + '     Game Count: ' + gameCount 
-              '     Wins: ' + winCount + '     Losses: ' + lossCount;
-            }
-      }  
-
-    //update gameCount, lossCount, winCount and return all three in state div
-  }
-<<<<<<< HEAD
+          round++;
+          result.classList.add('text');
+          results.appendChild(result);
+          updateScore();
 }
-=======
-}*/
->>>>>>> 1b630d8882e16ab13c461b59be1b97cafcef31dc
+
+//This function updates the score at the DOM and checks for final win condition
+function updateScore(){
+  if(playerScore <= maxWin && computerScore <= maxWin) {
+    let pScore = document.getElementById('playerScore');
+    pScore.textContent = playerScore;
+    let computer = document.getElementById('computerScore');
+    computer.textContent = computerScore;
+  }
+  if(computerScore === maxWin || playerScore === maxWin){
+    //Removes event listener
+    let btn = Array.from(document.getElementsByClassName('btn'));
+    btn.forEach(e => e.classList.remove('btn'));
+
+    //Shows final Score at display and changes Chappie's icon
+    let finalScore = document.createElement('p');
+    if(computerScore === maxWin){
+      finalScore.textContent = 'YOU LOSE, YOU LOUSE!';
+      player.setAttribute('style', 'border-color: red');
+    }else{
+      finalScore.textContent = 'YOU WIN, YOU LEGEND!!!';
+      player.setAttribute('style', 'border-color: green');
+    }
+    finalScore.setAttribute('style', 'font-size: 40px; font-weight: bold');
+    results.insertBefore(finalScore,results.firstChild);
+  }
+}
+
+//This function reboots the game
+function start(){
+  //adds btn class to user buttons, enabling click event listener
+  let btn = Array.from(document.getElementsByClassName('playerSelection'));
+  btn.forEach(e => e.classList.add('.btn'));
+  //Reset and updates scores
+  playerScore = 0;
+  computerScore = 0;
+  round = 1;
+  updateScore;
+  //Clears result window
+  let results = document.getElementById('result');
+  results.innerHTML = '<p>RESULTS</p>';
+  player.setAttribute('id', '');
+}
+
+//establish event listener
+window.addEventListener('click', (e) => {
+  //this check controls the click
+  if(e.target.className.includes('btn')){
+    let playerSelection = e.target.id;
+
+    playerSelection = (e.target.id).toUpperCase();
+    player.setAttribute('id', e.target.id);
+    playRound(playerSelection, getComputerChoice());
+  }
+  if(e.target.id === 'startBtn') {
+    start();
+  }
+});

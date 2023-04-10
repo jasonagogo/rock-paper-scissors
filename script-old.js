@@ -25,8 +25,7 @@ function getPlayerChoice() {
         computer.textContent = 'NOW CLICK ME!!!';
         return this.id;
     })
-})
-   return playerSelection;
+   })
 }
 
 //  Get the computer's choice(cc) between Rock, Paper, or scissors

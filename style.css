@@ -3,11 +3,7 @@ html {
     justify-content: center;
     align-items: center;
     min-height: fit-content;
-    /*background: url("images/800px-Rock-paper-scissors.png") no-repeat center fixed;*/
-   /* background-repeat:  no-repeat; 
-    background-position:  center;
-    background-size: ; */
-   /* height: 1333px; */
+    font-family: andale-mono, monospace;
     background-color: #a6c8b8;
 }
 
@@ -93,11 +89,19 @@ html {
     border-radius: 14px;
 }
 
-#gameState {
+.gameState {
+    margin: 8px;
+    display: flex;
     color:#5f475b;
     font-weight: 1000;
     font-size: 32px;
     text-align: center;
+    justify-content: space-around;
+    align-items: center;
+    border-color: #5f475b;
+    border-style: solid;
+    border-radius: 14px;
+    box-shadow: 3px 3px #251f24;
 }
 
 .playerSelection {
@@ -117,14 +121,15 @@ html {
     box-shadow: 3px 3px #251f24;
 }
 
-#buttons {
+.buttons {
     display: flex;
     flex-direction: row;
     margin-top:auto;
+    padding-top: 9px;
     justify-content: space-around;
 }
 
-#buttons #scissors {
+.buttons #scissors {
     margin-right: 7px;
     background-image: url("images/Chappie_scissors.png");
     background-repeat: no-repeat;
@@ -133,7 +138,7 @@ html {
     min-width: 200px;   
 }
 
-#buttons #rock {
+.buttons #rock {
     background-image: url("images/Chappie_rock.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -141,10 +146,27 @@ html {
     min-width: 200px;
 }
 
-#buttons #paper {
+.buttons #paper {
     background-image: url("images/Chappie_paper.png");
     background-repeat: no-repeat;
     background-size: contain;
     min-height: 200px; 
     min-width: 200px;
+}
+
+#startBtn {
+    font: inherit;
+    margin-top: 6px;
+    padding: 6px 12px 4px 12px;
+    background-color: #a6c8b8;
+    color: #5f475b;
+    font-weight: 700;
+    border-radius: 14px;
+    border-color: #5f475b;
+    border-style: solid;
+    box-shadow: 3px 3px #251f24;
+}
+
+#result .text {
+    font-size: 14px;
 }
