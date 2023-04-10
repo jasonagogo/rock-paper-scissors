@@ -75,6 +75,7 @@ function start(){
   //Clears result window
   let results = document.getElementById('result');
   results.innerHTML = '<p>RESULTS</p>';
+  player.removeAttribute('style');
   player.setAttribute('id', '');
 }
 
